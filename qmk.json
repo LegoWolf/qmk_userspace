@@ -1,6 +1,180 @@
 {
     "userspace_version": "1.1",
     "build_targets": [
-        ["splitkb/elora/rev1", "vial"]
+        ["splitkb/elora/rev1", "vial"],
+        [
+            "splitkb/kyria/rev3",
+            "vial_full",
+            {
+                "CONVERT_TO": "rp2040_ce"
+            }
+        ],
+        [
+            "splitkb/aurora/corne/rev1",
+            "vial_full",
+            {
+                "CONVERT_TO": "rp2040_ce"
+            }
+        ],
+        [
+            "splitkb/aurora/helix/rev1",
+            "vial_full",
+            {
+                "CONVERT_TO": "rp2040_ce"
+            }
+        ],
+        [
+            "splitkb/aurora/lily58/rev1",
+            "vial_full",
+            {
+                "CONVERT_TO": "rp2040_ce"
+            }
+        ],
+        [
+            "splitkb/aurora/sofle_v2/rev1",
+            "vial_full",
+            {
+                "CONVERT_TO": "rp2040_ce"
+            }
+        ],
+        [
+            "splitkb/aurora/sweep/rev1",
+            "vial_full",
+            {
+                "CONVERT_TO": "rp2040_ce"
+            }
+        ],
+        // [
+        //     "splitkb/kyria/rev3",
+        //     "vial_minimal",
+        //     {
+        //         "TARGET": "splitkb-kyria-rev3_vial_minimal_elite-c"
+        //     }
+        // ],
+        // [
+        //     "splitkb/aurora/corne/rev1",
+        //     "vial_minimal",
+        //     {
+        //         "TARGET": "splitkb-aurora-corne-rev1_vial_minimal_elite-c"
+        //     }
+        // ],
+        // [
+        //     "splitkb/aurora/helix/rev1",
+        //     "vial_minimal",
+        //     {
+        //         "TARGET": "splitkb-aurora-helix-rev1_vial_minimal_elite-c"
+        //     }
+        // ],
+        // [
+        //     "splitkb/aurora/lily58/rev1",
+        //     "vial_minimal",
+        //     {
+        //         "TARGET": "splitkb-aurora-lily58-rev1_vial_minimal_elite-c"
+        //     }
+        // ],
+        // [
+        //     "splitkb/aurora/sofle_v2/rev1",
+        //     "vial_minimal",
+        //     {
+        //         "TARGET": "splitkb-aurora-sofle_v2-rev1_vial_minimal_elite-c"
+        //     }
+        // ],
+        // [
+        //     "splitkb/aurora/sweep/rev1",
+        //     "vial_minimal",
+        //     {
+        //         "TARGET": "splitkb-aurora-sweep-rev1_vial_minimal_elite-c"
+        //     }
+        // ],
+        // [
+        //     "splitkb/kyria/rev3",
+        //     "vial_minimal",
+        //     {
+        //         "BOOTLOADER": "caterina",
+        //         "TARGET": "splitkb-kyria-rev3_vial_minimal_pro-micro"
+        //     }
+        // ],
+        // [
+        //     "splitkb/aurora/corne/rev1",
+        //     "vial_minimal",
+        //     {
+        //         "BOOTLOADER": "caterina",
+        //         "TARGET": "splitkb-aurora-corne-rev1_vial_minimal_pro-micro"
+        //     }
+        // ],
+        // [
+        //     "splitkb/aurora/helix/rev1",
+        //     "vial_minimal",
+        //     {
+        //         "BOOTLOADER": "caterina",
+        //         "TARGET": "splitkb-aurora-helix-rev1_vial_minimal_pro-micro"
+        //     }
+        // ],
+        // [
+        //     "splitkb/aurora/lily58/rev1",
+        //     "vial_minimal",
+        //     {
+        //         "BOOTLOADER": "caterina",
+        //         "TARGET": "splitkb-aurora-lily58-rev1_vial_minimal_pro-micro"
+        //     }
+        // ],
+        // [
+        //     "splitkb/aurora/sofle_v2/rev1",
+        //     "vial_minimal",
+        //     {
+        //         "BOOTLOADER": "caterina",
+        //         "TARGET": "splitkb-aurora-sofle_v2-rev1_vial_minimal_pro-micro"
+        //     }
+        // ],
+        // [
+        //     "splitkb/aurora/sweep/rev1",
+        //     "vial_minimal",
+        //     {
+        //         "BOOTLOADER": "caterina",
+        //         "TARGET": "splitkb-aurora-sweep-rev1_vial_minimal_pro-micro"
+        //     }
+        // ],
+        [
+            "splitkb/kyria/rev3",
+            "debug",
+            {
+                "CONVERT_TO": "rp2040_ce"
+            }
+        ],
+        [
+            "splitkb/aurora/corne/rev1",
+            "debug",
+            {
+                "CONVERT_TO": "rp2040_ce"
+            }
+        ],
+        [
+            "splitkb/aurora/helix/rev1",
+            "debug",
+            {
+                "CONVERT_TO": "rp2040_ce"
+            }
+        ],
+        [
+            "splitkb/aurora/lily58/rev1",
+            "debug",
+            {
+                "CONVERT_TO": "rp2040_ce"
+            }
+        ],
+        [
+            "splitkb/aurora/sofle_v2/rev1",
+            "debug",
+            {
+                "CONVERT_TO": "rp2040_ce"
+            }
+        ],
+        [
+            "splitkb/aurora/sweep/rev1",
+            "debug",
+            {
+                "CONVERT_TO": "rp2040_ce"
+            }
+        ]
     ]
 }
