@@ -8,5 +8,4 @@ MOUSEKEY_ENABLE = no
 COMBO_ENABLE = no
 QMK_SETTINGS = no
 OLED_ENABLE = no
-
-SRC+=oneshot_shim.c
+RGBLIGHT_ENABLE = no

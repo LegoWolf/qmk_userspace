@@ -9,3 +9,6 @@
 #define VIAL_UNLOCK_COMBO_COLS { 0, 0 }
 
 #define NO_ACTION_ONESHOT
+
+
+#define DYNAMIC_KEYMAP_LAYER_COUNT 8

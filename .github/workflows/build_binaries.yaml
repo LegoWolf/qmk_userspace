@@ -19,4 +19,4 @@ jobs:
     if: always() && !cancelled()
     needs: build
     with:
-      release_name: "vial"
+      release_name: "vial-latest"
