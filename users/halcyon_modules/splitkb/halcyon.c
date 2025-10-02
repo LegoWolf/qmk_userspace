@@ -135,7 +135,6 @@ void housekeeping_task_kb(void) {
 }
 
 report_mouse_t pointing_device_task_combined_kb(report_mouse_t left_report, report_mouse_t right_report) {
-    uprintf("Pointing device status %d", pointing_device_get_status());
     // Only runs on master
     // Fixes the following bug: If master is right and master is NOT a cirque trackpad, the inputs would be inverted.
     if(module != hlc_cirque_trackpad && !is_keyboard_left()) {
