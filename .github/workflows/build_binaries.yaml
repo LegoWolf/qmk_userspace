@@ -20,5 +20,3 @@ jobs:
       release_name: mini42-davidf-latest
     if: always() && !cancelled()
     needs: build
-    with:
-      release_name: "vial-latest"
