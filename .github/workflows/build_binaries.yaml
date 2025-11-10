@@ -16,5 +16,7 @@ jobs:
   publish:
     name: 'QMK Userspace Publish'
     uses: qmk/.github/.github/workflows/qmk_userspace_publish.yml@main
+    with:
+      release_name: mini42-qmk-latest
     if: always() && !cancelled()
     needs: build
