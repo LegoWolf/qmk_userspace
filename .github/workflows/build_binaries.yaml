@@ -17,6 +17,6 @@ jobs:
     name: 'QMK Userspace Publish'
     uses: qmk/.github/.github/workflows/qmk_userspace_publish.yml@main
     with:
-      release_name: "crkbd_rev1:davidf"
+      release_name: crkbd-rev1-davidf-latest
     if: always() && !cancelled()
     needs: build
