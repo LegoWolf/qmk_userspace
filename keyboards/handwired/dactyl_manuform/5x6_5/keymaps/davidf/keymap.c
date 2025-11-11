@@ -38,15 +38,15 @@ typedef enum {
 #else
     KC_OSMODE = SAFE_RANGE,
 #endif
-    KC_A_CIRCUMFLEX,        // USER03
-    KC_E_CIRCUMFLEX,        // USER04
-    KC_E_DIAERESIS,         // USER05
-    KC_I_CIRCUMFLEX,        // USER06
-    KC_I_DIAERESIS,         // USER07
-    KC_O_CIRCUMFLEX,        // USER08
-    KC_U_CIRCUMFLEX,        // USER09
-    KC_U_DIAERESIS,         // USER10
-    KC_Y_DIAERESIS          // USER11
+    KC_A_CIRCUMFLEX,        // QK_USER_1
+    KC_E_CIRCUMFLEX,        // QK_USER_2
+    KC_E_DIAERESIS,         // QK_USER_3
+    KC_I_CIRCUMFLEX,        // QK_USER_4
+    KC_I_DIAERESIS,         // QK_USER_5
+    KC_O_CIRCUMFLEX,        // QK_USER_6
+    KC_U_CIRCUMFLEX,        // QK_USER_7
+    KC_U_DIAERESIS,         // QK_USER_8
+    KC_Y_DIAERESIS          // QK_USER_9
 } custom_keycodes_t;
 
 #define MAX_LAYERS (LAYER_NUM + 1)
@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,         XXXXXXX,     XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,             KC_PGUP,          KC_HOME,           KC_UP,             KC_END,          XXXXXXX,          XXXXXXX,
         XXXXXXX,         KC_MPRV,     KC_MNXT,         KC_VOLD,         KC_VOLU,         KC_MPLY,             KC_PGDN,          KC_LEFT,           KC_DOWN,           KC_RGHT,         XXXXXXX,          XXXXXXX,
         _______,         XXXXXXX,     KC_LGUI,         KC_LCTL,         KC_LALT,         KC_MUTE,             XXXXXXX,          XXXXXXX,           XXXXXXX,           XXXXXXX,         XXXXXXX,          _______,
-                         XXXXXXX,     XXXXXXX,         XXXXXXX,         XXXXXXX,         _______,             _______,          XXXXXXX,           XXXXXXX,           KC_WH_U,         KC_WH_D,
+                         XXXXXXX,     XXXXXXX,         XXXXXXX,         XXXXXXX,         _______,             _______,          XXXXXXX,           XXXXXXX,           MS_WHLU,         MS_WHLD,
                                                                         _______,         _______,             _______,          _______
     ),
 
@@ -109,8 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 static os_modes_t os_mode = WIN;
 
-static void emit_key_event(uint16_t keycode, keyrecord_t *record)
-{
+static void emit_key_event(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
         register_code16(keycode);
     } else {
@@ -118,8 +117,7 @@ static void emit_key_event(uint16_t keycode, keyrecord_t *record)
     }
 }
 
-static bool swap_key_event(uint16_t keycode, keyrecord_t *record)
-{
+static bool swap_key_event(uint16_t keycode, keyrecord_t *record) {
     if (os_mode == MAC) {
         emit_key_event(keycode, record);
         return false;
@@ -127,8 +125,7 @@ static bool swap_key_event(uint16_t keycode, keyrecord_t *record)
     return true;
 }
 
-static bool send_deadkey_event(uint16_t deadkeycode, uint16_t keycode, keyrecord_t *record)
-{
+static bool send_deadkey_event(uint16_t deadkeycode, uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
         uint8_t mods = get_mods() & (MOD_MASK_SHIFT | MOD_BIT(KC_RALT));
         del_mods(mods);
