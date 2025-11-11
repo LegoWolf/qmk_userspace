@@ -1,0 +1,4 @@
+VIA_ENABLE = yes
+LTO_ENABLE = yes
+PIN_COMPATIBLE = promicro
+CONVERT_TO = blok
