@@ -64,15 +64,6 @@ typedef enum {
 #define KC_YDIA KC_Y_DIAERESIS
 #define MAX_LAYERS (LAYER_GAME + 1)
 
-#define KC_WH_U QK_MOUSE_WHEEL_UP
-#define KC_WH_D QK_MOUSE_WHEEL_DOWN
-#define RGB_TOG QK_UNDERGLOW_TOGGLE
-#define RGB_MOD QK_UNDERGLOW_MODE_NEXT
-#define RGB_HUI QK_UNDERGLOW_HUE_UP
-#define RGB_SAI QK_UNDERGLOW_SATURATION_UP
-#define RGB_VAI QK_UNDERGLOW_VALUE_UP
-#define RGB_SPI QK_UNDERGLOW_SPEED_UP
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_split_3x6_3(
       KC_ESC,          KC_Q,        KC_W,          KC_E,           KC_R,          KC_T,                KC_Y,             KC_U,          KC_I,          KC_O,          KC_P,          KC_MINS,
@@ -84,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_NAV] = LAYOUT_split_3x6_3(
       XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,       XXXXXXX,             KC_PGUP,          KC_HOME,       KC_UP,         KC_END,        XXXXXXX,       XXXXXXX,
       XXXXXXX,         KC_MPRV,     KC_MNXT,       KC_VOLD,        KC_VOLU,       KC_MPLY,             KC_PGDN,          KC_LEFT,       KC_DOWN,       KC_RIGHT,      XXXXXXX,       XXXXXXX,
-      _______,         XXXXXXX,     KC_LGUI,       KC_LCTL,        KC_LALT,       KC_MUTE,             XXXXXXX,          XXXXXXX,       KC_WH_U,       KC_WH_D,       XXXXXXX ,      _______,
+      _______,         XXXXXXX,     KC_LGUI,       KC_LCTL,        KC_LALT,       KC_MUTE,             XXXXXXX,          XXXXXXX,       MS_WHLU,       MS_WHLD,       XXXXXXX ,      _______,
                                                    _______,        _______,       _______,             _______,          _______,       _______
   ),
 
@@ -98,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_FUNC] = LAYOUT_split_3x6_3(
       XXXXXXX,         KC_F11,      KC_F12,        KC_F13,         KC_F14,        KC_F15,              KC_F16,           KC_BRID,       KC_BRIU,       KC_MCTL,       KC_LPAD,       TG(LAYER_GAME),
       XXXXXXX,         KC_F1,       KC_F2,         KC_F3,          KC_F4,         KC_F5,               KC_F6,            KC_F7,         KC_F8,         KC_F9,         KC_F10,        XXXXXXX,
-      _______,         KC_PAUS,     KC_PSCR,       KC_NUM,         KC_SCRL,       RGB_TOG,             RGB_MOD,          RGB_HUI,       RGB_SAI,       RGB_VAI,       RGB_SPI,       _______,
+      _______,         KC_PAUS,     KC_PSCR,       KC_NUM,         KC_SCRL,       UG_TOGG,             UG_NEXT,          UG_HUEU,       UG_SATU,       UG_VALU,       UG_SPDU,       _______,
                                                    _______,        _______,       _______,             _______,          _______,       _______
   ),
 
