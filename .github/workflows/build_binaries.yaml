@@ -20,5 +20,3 @@ jobs:
       release_name: dactyl-blok-vial-latest
     if: always() && !cancelled()
     needs: build
-    with:
-      release_name: "vial-latest"
