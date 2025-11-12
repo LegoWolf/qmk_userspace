@@ -1,6 +1,7 @@
 /*
 Copyright 2019 @foostan
 Copyright 2020 Drashna Jaelre <@drashna>
+Copyright 2022 Kevin Gee <info@controller.works>
 Copyright 2023 David Falkner <falkner@martica.org>
 
 This program is free software: you can redistribute it and/or modify
@@ -1051,7 +1052,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KC_U_DIAERESIS: return send_deadkey_event(CA_DIAE, KC_U, record);
         case KC_Y_DIAERESIS: return send_deadkey_event(CA_DIAE, KC_Y, record);
 
-        // Mac and Windows swap the placement of NUBS and GRAVE under CSA keyboard layout.
+        // Mac and Windows swap the placement of NUBS and CA_SLSH under CSA keyboard layout.
         case KC_NONUS_BACKSLASH: return swap_key_event(CA_SLSH, record);
         case S(KC_NONUS_BACKSLASH): return swap_key_event(S(CA_SLSH), record);
         case CA_SLSH: return swap_key_event(KC_NONUS_BACKSLASH, record);
