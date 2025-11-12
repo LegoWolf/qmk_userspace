@@ -1,5 +1,6 @@
-MOUSEKEY_ENABLE = no    # Mouse keys
-RGBLIGHT_ENABLE = no    # Enable WS2812 RGB underlight.
-LTO_ENABLE      = yes
-VIA_ENABLE      = yes
+LTO_ENABLE = yes
+VIA_ENABLE = yes
+MOUSEKEY_ENABLE = yes
+TRI_LAYER_ENABLE = yes
 CAPS_WORD_ENABLE = no
+RGBLIGHT_ENABLE = no

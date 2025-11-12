@@ -17,14 +17,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include QMK_KEYBOARD_H
-#include <stdio.h>
+#include <keymap_canadian_multilingual.h>
 
 typedef enum {
     LAYER_BASE,
-    LAYER_SUPER,
-    LAYER_FUNC,
     LAYER_NAV,
-    LAYER_NUM
+    LAYER_NUM,
+    LAYER_FUNC,
+    LAYER_SUPER
 } custom_layers_t;
 
 typedef enum {
@@ -34,75 +34,48 @@ typedef enum {
 
 typedef enum {
 #ifdef VIA_ENABLE
-    KC_OSMODE = QK_KB_0,
+    KC_OSMODE = QK_USER_0,
 #else
     KC_OSMODE = SAFE_RANGE,
 #endif
-    KC_VERTICAL_BAR,
 } custom_keycodes_t;
 
-#define KC_VBAR KC_VERTICAL_BAR 
-#define MAX_LAYERS (LAYER_NUM + 1)
+#define MAX_LAYERS (LAYER_SUPER + 1)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_split_3x6_3(
-  //,----------------+------------+----------------+----------------+----------------+-----------------.  ,-----------------+------------------+------------------+----------------+-----------------+----------------.
-      KC_ESCAPE,       KC_Q,        KC_W,            KC_E,            KC_R,            KC_T,                KC_Y,             KC_U,              KC_I,              KC_O,            KC_P,             KC_MINUS,
-  //|----------------|------------|----------------|----------------|----------------|-----------------|  |-----------------|------------------|------------------|----------------|-----------------|----------------|
-      MO(LAYER_SUPER), KC_A,        KC_S,            KC_D,            KC_F,            KC_G,                KC_H,             KC_J,              KC_K,              KC_L,            KC_SCLN,          MO(LAYER_SUPER),
-  //|----------------|------------|----------------|----------------|----------------|-----------------|  |-----------------|------------------|------------------|----------------|-----------------|----------------|
-      OSM(MOD_LSFT),   KC_Z,        KC_X,            KC_C,            KC_V,            KC_B,                KC_N,             KC_M,              KC_COMMA,          KC_DOT,          KC_SLASH,         OSM(MOD_RSFT),
-  //`----------------+------------+----------------|----------------|----------------|-----------------|  |-----------------|------------------|------------------|----------------+-----------------+----------------,
-                                                     TT(LAYER_NAV),   KC_BSPC,         LCTL_T(KC_TAB),      KC_ENTER,         KC_SPACE,          KC_RALT
-  //                                               `----------------+----------------+-----------------,  `-----------------+------------------+------------------,                                                    
-  ),
-
-  [LAYER_SUPER] = LAYOUT_split_3x6_3(
-  //,----------------+------------+----------------+----------------+----------------+-----------------.  ,-----------------+------------------+------------------+----------------+-----------------+----------------.
-      _______,         KC_BSLS,     XXXXXXX,         KC_QUOTE,        XXXXXXX,         KC_INSERT,           KC_DELETE,        KC_NUBS,           KC_GRAVE,          KC_LBRC,         KC_VBAR,          KC_EQUAL,
-  //|----------------|------------|----------------|----------------|----------------|-----------------|  |-----------------|------------------|------------------|----------------|-----------------|----------------|
-      XXXXXXX,         KC_1,        KC_2,            KC_3,            KC_4,            KC_5,                KC_6,             KC_7,              KC_8,              KC_9,            KC_0,             XXXXXXX,
-  //|----------------|------------|----------------|----------------|----------------|-----------------|  |-----------------|------------------|------------------|----------------|-----------------|----------------|
-      KC_CAPS,         XXXXXXX,     XXXXXXX,         KC_RBRC,         XXXXXXX,         XXXXXXX,             KC_APPLICATION,   OSM(MOD_LGUI),     OSM(MOD_LCTL),     OSM(MOD_LALT),   OSL(LAYER_FUNC),  _______,
-  //`----------------+------------+----------------|----------------|----------------|-----------------|  |-----------------|------------------|------------------|----------------+-----------------+----------------,
-                                                     TT(LAYER_NUM),   _______,         _______,             KC_OSMODE,        _______,           _______
-  //                                               `----------------+----------------+-----------------,  `-----------------+------------------+------------------,                                                    
-  ),
-
-  [LAYER_FUNC] = LAYOUT_split_3x6_3(
-  //,----------------+------------+----------------+----------------+----------------+-----------------.  ,-----------------+------------------+------------------+----------------+-----------------+----------------.
-      XXXXXXX,         KC_F11,      KC_F12,          KC_F13,          KC_F14,          KC_F15,              KC_F16,           KC_F17,            KC_F18,            KC_F19,          KC_F20,           XXXXXXX,
-  //|----------------|------------|----------------|----------------|----------------|-----------------|  |-----------------|------------------|------------------|----------------|-----------------|----------------|
-      _______,         KC_F1,       KC_F2,           KC_F3,           KC_F4,           KC_F5,               KC_F6,            KC_F7,             KC_F8,             KC_F9,           KC_F10,           _______,
-  //|----------------|------------|----------------|----------------|----------------|-----------------|  |-----------------|------------------|------------------|----------------|-----------------|----------------|
-      _______,         XXXXXXX,     XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,             KC_PAUSE,         KC_PSCR,           KC_LNUM,           KC_LSCR,         XXXXXXX,          _______,
-  //`----------------+------------+----------------|----------------|----------------|-----------------|  |-----------------|------------------|------------------|----------------+-----------------+----------------,
-                                                     XXXXXXX,         _______,         _______,             _______,          _______,           _______
-  //                                               `----------------+----------------+-----------------,  `-----------------+------------------+------------------,                                                    
+      KC_ESC,          KC_Q,        KC_W,          KC_E,           KC_R,          KC_T,                KC_Y,             KC_U,          KC_I,          KC_O,          KC_P,          KC_MINS,
+      MO(LAYER_SUPER), KC_A,        KC_S,          KC_D,           KC_F,          KC_G,                KC_H,             KC_J,          KC_K,          KC_L,          KC_SCLN,       MO(LAYER_SUPER),
+      OSM(MOD_LSFT),   KC_Z,        KC_X,          KC_C,           KC_V,          KC_B,                KC_N,             KC_M,          KC_COMM,       KC_DOT,        CA_EACU,       OSM(MOD_RSFT),
+                                                   TL_LOWR,        KC_BSPC,       LCTL_T(KC_TAB),      KC_ENTER,         KC_SPACE,      TL_UPPR
   ),
 
   [LAYER_NAV] = LAYOUT_split_3x6_3(
-  //,----------------+------------+----------------+----------------+----------------+-----------------.  ,-----------------+------------------+------------------+----------------+-----------------+----------------.
-      TT(LAYER_NAV),   XXXXXXX,     KC_HOME,         KC_UP,           KC_END,          KC_PGUP,             KC_PGUP,          KC_HOME,           KC_UP,             KC_END,          XXXXXXX,          XXXXXXX,
-  //|----------------|------------|----------------|----------------|----------------|-----------------|  |-----------------|------------------|------------------|----------------|-----------------|----------------|
-      _______,         XXXXXXX,     KC_LEFT,         KC_DOWN,         KC_RIGHT,        KC_PGDN,             KC_PGDN,          KC_LEFT,           KC_DOWN,           KC_RIGHT,        XXXXXXX,          _______,
-  //|----------------|------------|----------------|----------------|----------------|-----------------|  |-----------------|------------------|------------------|----------------|-----------------|----------------|
-      _______,         XXXXXXX,     OSM(MOD_LGUI),   OSM(MOD_LCTL),   OSM(MOD_LALT),   XXXXXXX,             XXXXXXX,          OSM(MOD_LGUI),     OSM(MOD_LCTL),     OSM(MOD_LALT),   XXXXXXX,          _______,
-  //`----------------+------------+----------------|----------------|----------------|-----------------|  |-----------------|------------------|------------------|----------------+-----------------+----------------,
-                                                     TT(LAYER_NAV),   _______,         _______,             _______,          _______,           _______
-  //                                               `----------------+----------------+-----------------,  `-----------------+------------------+------------------,                                                    
+      XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,       XXXXXXX,             KC_PGUP,          KC_HOME,       KC_UP,         KC_END,        XXXXXXX,       XXXXXXX,
+      XXXXXXX,         KC_MPRV,     KC_MNXT,       KC_VOLD,        KC_VOLU,       KC_MPLY,             KC_PGDN,          KC_LEFT,       KC_DOWN,       KC_RIGHT,      XXXXXXX,       XXXXXXX,
+      _______,         XXXXXXX,     KC_LGUI,       KC_LCTL,        KC_LALT,       KC_MUTE,             XXXXXXX,          XXXXXXX,       MS_WHLU,       MS_WHLD,       XXXXXXX ,      _______,
+                                                   _______,        _______,       _______,             _______,          _______,       _______
   ),
 
   [LAYER_NUM] = LAYOUT_split_3x6_3(
-  //,----------------+------------+----------------+----------------+----------------+-----------------.  ,-----------------+------------------+------------------+----------------+-----------------+----------------.
-      TT(LAYER_NUM),   XXXXXXX,     KC_BRID,         XXXXXXX,         KC_BRIU,         KC_VOLU,             KC_KP_SLASH,      KC_KP_7,           KC_KP_8,           KC_KP_9,         KC_KP_PLUS,       XXXXXXX,
-  //|----------------|------------|----------------|----------------|----------------|-----------------|  |-----------------|------------------|------------------|----------------|-----------------|----------------|
-      XXXXXXX,         XXXXXXX,     KC_MPRV,         KC_MPLY,         KC_MNXT,         KC_VOLD,             KC_KP_0,          KC_KP_4,           KC_KP_5,           KC_KP_6,         KC_KP_MINUS,      XXXXXXX,
-  //|----------------|------------|----------------|----------------|----------------|-----------------|  |-----------------|------------------|------------------|----------------|-----------------|----------------|
-      XXXXXXX,         XXXXXXX,     XXXXXXX,         KC_MCTL,         KC_LPAD,         KC_MUTE,             KC_KP_ASTERISK,   KC_KP_1,           KC_KP_2,           KC_KP_3,         KC_KP_COMMA,      XXXXXXX,
-  //`----------------+------------+----------------|----------------|----------------|-----------------|  |-----------------|------------------|------------------|----------------+-----------------+----------------,
-                                                     TT(LAYER_NUM),   _______,         XXXXXXX,             KC_KP_ENTER,      KC_KP_EQUAL,       KC_KP_DOT
-  //                                               `----------------+----------------+-----------------,  `-----------------+------------------+------------------,                                                    
+      XXXXXXX,         S(KC_1),     S(KC_2),       S(KC_3),        S(KC_4),       S(KC_5),             S(KC_6),          S(KC_7),       S(KC_8),       S(KC_9),       S(KC_0),       XXXXXXX,
+      XXXXXXX,         KC_1,        KC_2,          KC_3,           KC_4,          KC_5,                KC_6,             KC_7,          KC_8,          KC_9,          KC_0,          XXXXXXX,
+      _______,         XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,       XXXXXXX,             XXXXXXX,          XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       _______,
+                                                   _______,        _______,       _______,             _______,          _______,       _______
+  ),
+
+  [LAYER_FUNC] = LAYOUT_split_3x6_3(
+      XXXXXXX,         KC_F11,      KC_F12,        KC_F13,         KC_F14,        KC_F15,              KC_F16,           KC_BRID,       KC_BRIU,       KC_MCTL,       KC_LPAD,       XXXXXXX,
+      XXXXXXX,         KC_F1,       KC_F2,         KC_F3,          KC_F4,         KC_F5,               KC_F6,            KC_F7,         KC_F8,         KC_F9,         KC_F10,        XXXXXXX,
+      _______,         KC_PAUS,     KC_PSCR,       KC_NUM,         KC_SCRL,       XXXXXXX,             XXXXXXX,          XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       _______,
+                                                   _______,        _______,       _______,             _______,          _______,       _______
+  ),
+
+  [LAYER_SUPER] = LAYOUT_split_3x6_3(
+      XXXXXXX,         XXXXXXX,     XXXXXXX,       CA_EGRV,        CA_DTIL,       KC_INS,              KC_DEL,           CA_UGRV,       CA_GRV,        CA_CIRC,       CA_DIAE,       KC_EQL,
+      XXXXXXX,         CA_AGRV,     CA_PIPE,       CA_LABK,        CA_RABK,       CA_BSLS,             CA_SLSH,          CA_LCBR,       CA_RCBR,       CA_LBRC,       CA_RBRC,       CA_PLUS,
+      KC_CAPS,         CA_LDAQ,     CA_RDAQ,       CA_CCED,        XXXXXXX,       XXXXXXX,             KC_APP,           OSM(MOD_LGUI), OSM(MOD_LCTL), OSM(MOD_LALT), OSM(MOD_RALT), KC_CAPS,
+                                                   _______,        _______,       _______,             _______,          _______,       KC_OSMODE
   )
 };
 
@@ -247,16 +220,28 @@ static void oled_gfx_render_layer_state(int x, int y) {
         0x00, 0x00, 0x00, 0x00, 0x03, 0x07, 0x07, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
     };
 
-    // 'layer-super', 32x32px
-    static const char bitmap_super[] PROGMEM = {
-        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xe0, 0xf0, 0x70, 0x70, 0x70, 
-        0x70, 0x70, 0x70, 0xf0, 0xe0, 0xc0, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x80, 0xff, 0xff, 0xff, 0xc1, 0x80, 0x80, 0x80, 
-        0x80, 0x80, 0x80, 0x00, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x01, 0x81, 0xe3, 0xff, 0xff, 0x3f, 0x01, 0x01, 
-        0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0c, 0x0e, 0x0f, 0x0f, 0x0f, 0x07, 0x07, 0x07, 0x07, 
-        0x0f, 0x0e, 0x0e, 0x0e, 0x0e, 0x0e, 0x0f, 0x07, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+    // 'layer-navigation', 32x32px
+    static const char bitmap_navigation[] PROGMEM = {
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xc0, 0xe0, 0xf0, 
+        0xf0, 0xe0, 0xc0, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+        0x00, 0x00, 0x00, 0x00, 0x80, 0xc0, 0xe0, 0xf0, 0xb0, 0x80, 0x80, 0x80, 0x81, 0x01, 0x00, 0x1f, 
+        0x1f, 0x00, 0x01, 0x81, 0x80, 0x80, 0x80, 0xb0, 0xf0, 0xe0, 0xc0, 0x80, 0x00, 0x00, 0x00, 0x00, 
+        0x00, 0x00, 0x00, 0x00, 0x01, 0x03, 0x07, 0x0f, 0x0d, 0x01, 0x01, 0x01, 0x81, 0x80, 0x00, 0xf8, 
+        0xf8, 0x00, 0x80, 0x81, 0x01, 0x01, 0x01, 0x0d, 0x0f, 0x07, 0x03, 0x01, 0x00, 0x00, 0x00, 0x00, 
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x03, 0x07, 0x0f, 
+        0x0f, 0x07, 0x03, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+    };
+
+    // 'layer-number', 32x32px
+    static const char bitmap_number[] PROGMEM = {
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xc0, 0xc0, 0xc0, 
+        0xc0, 0xc0, 0xc0, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x78, 0xfe, 0xff, 0x83, 0x01, 0x00, 0x00, 
+        0x00, 0x01, 0x01, 0x83, 0xff, 0xfe, 0xf8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x03, 0x07, 0x07, 0x06, 0x06, 
+        0x06, 0x86, 0xe3, 0xff, 0x7f, 0x1f, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x06, 0x06, 0x06, 0x07, 
+        0x03, 0x03, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
     };
 
     // 'layer-function', 32x32px
@@ -271,31 +256,19 @@ static void oled_gfx_render_layer_state(int x, int y) {
         0x00, 0x07, 0x07, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x07, 0x07, 0x00, 0x00, 0x00
     };
 
-    // 'layer-navigation', 32x32px
-    static const char bitmap_navigation[] PROGMEM = {
-        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xc0, 0xe0, 0xf0, 
-        0xf0, 0xe0, 0xc0, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-        0x00, 0x00, 0x00, 0x00, 0x80, 0xc0, 0xe0, 0xf0, 0xb0, 0x80, 0x80, 0x80, 0x81, 0x01, 0x00, 0x1f, 
-        0x1f, 0x00, 0x01, 0x81, 0x80, 0x80, 0x80, 0xb0, 0xf0, 0xe0, 0xc0, 0x80, 0x00, 0x00, 0x00, 0x00, 
-        0x00, 0x00, 0x00, 0x00, 0x01, 0x03, 0x07, 0x0f, 0x0d, 0x01, 0x01, 0x01, 0x81, 0x80, 0x00, 0xf8, 
-        0xf8, 0x00, 0x80, 0x81, 0x01, 0x01, 0x01, 0x0d, 0x0f, 0x07, 0x03, 0x01, 0x00, 0x00, 0x00, 0x00, 
-        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x03, 0x07, 0x0f, 
-        0x0f, 0x07, 0x03, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+    // 'layer-super', 32x32px
+    static const char bitmap_super[] PROGMEM = {
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xe0, 0xf0, 0x70, 0x70, 0x70, 
+        0x70, 0x70, 0x70, 0xf0, 0xe0, 0xc0, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x80, 0xff, 0xff, 0xff, 0xc1, 0x80, 0x80, 0x80, 
+        0x80, 0x80, 0x80, 0x00, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x01, 0x81, 0xe3, 0xff, 0xff, 0x3f, 0x01, 0x01, 
+        0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0c, 0x0e, 0x0f, 0x0f, 0x0f, 0x07, 0x07, 0x07, 0x07, 
+        0x0f, 0x0e, 0x0e, 0x0e, 0x0e, 0x0e, 0x0f, 0x07, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
     };
 
-    // 'layer-game', 32x32px
-    static const char bitmap_game[] PROGMEM = {
-        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x80, 0x80, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x80, 0x80, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-        0x00, 0x00, 0xf8, 0xfe, 0x1f, 0x1f, 0x1f, 0x03, 0x03, 0x03, 0x1f, 0x1f, 0x1f, 0xfe, 0xfe, 0xfe, 
-        0xfe, 0xfe, 0xfe, 0x1f, 0x1f, 0x1f, 0xe3, 0xe3, 0xe3, 0x1f, 0x1f, 0x1f, 0xfe, 0xf8, 0x00, 0x00, 
-        0x00, 0x00, 0x07, 0x3f, 0xff, 0xff, 0xff, 0xf8, 0xf8, 0x78, 0x3f, 0x1f, 0x1f, 0x0f, 0x0f, 0x07, 
-        0x07, 0x0f, 0x0f, 0x1f, 0x1f, 0x3f, 0x78, 0xf8, 0xf8, 0xff, 0xff, 0xff, 0x3f, 0x03, 0x00, 0x00, 
-        0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00
-    };
-
-    static const char* const bitmaps[] PROGMEM = {bitmap_base, bitmap_super, bitmap_function, bitmap_navigation, bitmap_game};
+    static const char* const bitmaps[] PROGMEM = {bitmap_base, bitmap_navigation, bitmap_number, bitmap_function, bitmap_super};
     bool valid = (0 <= current.layer && current.layer < MAX_LAYERS);
     const char *bitmap = valid ? (const char *)pgm_read_word(bitmaps + current.layer) : NULL;
     oled_gfx_render_large_bitmap(x, y, bitmap, valid);
@@ -460,13 +433,22 @@ void keyboard_post_init_user( void ) {
 
 #endif // OLED_ENABLE
 
-void emit_key_event(uint16_t keycode, keyrecord_t *record)
+static void emit_key_event(uint16_t keycode, keyrecord_t *record)
 {
     if (record->event.pressed) {
         register_code16(keycode);
     } else {
         unregister_code16(keycode);
     }  
+}
+
+static bool swap_key_event(uint16_t keycode, keyrecord_t *record)
+{
+    if (os_mode == MAC) {
+        emit_key_event(keycode, record);
+        return false;
+    }
+    return true;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -478,39 +460,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
 
-        case KC_VERTICAL_BAR:
-              if (os_mode == MAC) {
-                  // On the Mac CSA keyboard layout, vertical bar is just RALT+MINUS.
-                  emit_key_event(RALT(KC_MINUS), record);
-              } else if (record->event.pressed) {
-                  // On the Windows CSA keyboard layout, vertical bar is unavailable.
-                  // So we swap to US layout, type the vertical bar and swap back.
-                  SEND_STRING(SS_LGUI(" ") SS_DELAY(100) "|" SS_LGUI(" "));
-              }
-            return false;
+        // Mac and Windows swap the placement of KC_NUBS and CA_SLSH under CSA keyboard layout.
+        case KC_NONUS_BACKSLASH: return swap_key_event(CA_SLSH, record);
+        case S(KC_NONUS_BACKSLASH): return swap_key_event(S(CA_SLSH), record);
+        case CA_SLSH: return swap_key_event(KC_NONUS_BACKSLASH, record);
+        case S(CA_SLSH): return swap_key_event(S(KC_NONUS_BACKSLASH), record);
+        case CA_PIPE: return swap_key_event(RALT(KC_MINUS), record);
 
-        case KC_NONUS_BACKSLASH:
-            if (os_mode == MAC) {
-                // Mac and Windows swap the placement of NUBS and GRAVE under CSA keyboard layout.
-                emit_key_event(KC_GRAVE, record);
-                return false;
-            }
-            break;
-
-        case KC_GRAVE:
-            if (os_mode == MAC) {
-                // Mac and Windows swap the placement of NUBS and GRAVE under CSA keyboard layout.
-                emit_key_event(KC_NONUS_BACKSLASH, record);
-                return false;
-            }
-            break;
-
+        // Suppress keys that confuse the selected OS.
+        case KC_PAUSE:
         case KC_SCROLL_LOCK:
-            if (os_mode == MAC) {
-                // Suppress scroll lock on Mac. It just gets confused.
-                return false;
-            }
-            break;
+            return (os_mode == WIN);
+        case KC_MISSION_CONTROL:
+        case KC_LAUNCHPAD:
+            return (os_mode == MAC);
 
         case LCTL_T(KC_TAB):
             if (os_mode == MAC && !record->tap.count) {
