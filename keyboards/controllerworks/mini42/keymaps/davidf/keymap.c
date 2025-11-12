@@ -959,7 +959,7 @@ static void emit_key_event(uint16_t keycode, keyrecord_t *record)
         register_code16(keycode);
     } else {
         unregister_code16(keycode);
-    }  
+    }
 }
 
 static bool swap_key_event(uint16_t keycode, keyrecord_t *record)
@@ -973,7 +973,7 @@ static bool swap_key_event(uint16_t keycode, keyrecord_t *record)
 
 static bool send_deadkey_event(uint16_t deadkeycode, uint16_t keycode, keyrecord_t *record)
 {
-    if( record->event.pressed ) {
+    if (record->event.pressed) {
         uint8_t mods = get_mods() & (MOD_MASK_SHIFT | MOD_BIT(KC_RALT));
         del_mods(mods);
         tap_code16(deadkeycode);
