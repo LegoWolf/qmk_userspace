@@ -1052,7 +1052,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KC_U_DIAERESIS: return send_deadkey_event(CA_DIAE, KC_U, record);
         case KC_Y_DIAERESIS: return send_deadkey_event(CA_DIAE, KC_Y, record);
 
-        // Mac and Windows swap the placement of NUBS and CA_SLSH under CSA keyboard layout.
+        // Mac and Windows swap the placement of KC_NUBS and CA_SLSH under CSA keyboard layout.
         case KC_NONUS_BACKSLASH: return swap_key_event(CA_SLSH, record);
         case S(KC_NONUS_BACKSLASH): return swap_key_event(S(CA_SLSH), record);
         case CA_SLSH: return swap_key_event(KC_NONUS_BACKSLASH, record);
