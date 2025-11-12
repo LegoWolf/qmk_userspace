@@ -1,6 +1,7 @@
 /*
 Copyright 2019 @foostan
 Copyright 2020 Drashna Jaelre <@drashna>
+Copyright 2023 David Falkner <falkner@martica.org>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -35,20 +36,20 @@ typedef enum {
 
 typedef enum {
 #ifdef VIA_ENABLE
-    KC_OSMODE = QK_KB_0,    // QK_KB_00
+    KC_OSMODE = QK_USER_0,  // QK_USER_0
 #else
     KC_OSMODE = SAFE_RANGE,
 #endif
-    KC_ANIMATE,             // QK_KB_01
-    KC_A_CIRCUMFLEX,        // QK_KB_02
-    KC_E_CIRCUMFLEX,        // QK_KB_03
-    KC_E_DIAERESIS,         // QK_KB_04
-    KC_I_CIRCUMFLEX,        // QK_KB_05
-    KC_I_DIAERESIS,         // QK_KB_06
-    KC_O_CIRCUMFLEX,        // QK_KB_07
-    KC_U_CIRCUMFLEX,        // QK_KB_08
-    KC_U_DIAERESIS,         // QK_KB_09
-    KC_Y_DIAERESIS          // QK_KB_10
+    KC_ANIMATE,             // QK_USER_1
+    KC_A_CIRCUMFLEX,        // QK_USER_2
+    KC_E_CIRCUMFLEX,        // QK_USER_3
+    KC_E_DIAERESIS,         // QK_USER_4
+    KC_I_CIRCUMFLEX,        // QK_USER_5
+    KC_I_DIAERESIS,         // QK_USER_6
+    KC_O_CIRCUMFLEX,        // QK_USER_7
+    KC_U_CIRCUMFLEX,        // QK_USER_8
+    KC_U_DIAERESIS,         // QK_USER_9
+    KC_Y_DIAERESIS          // QK_USER_10
 } custom_keycodes_t;
 
 #define KC_ANIM KC_ANIMATE
@@ -68,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESC,          KC_Q,        KC_W,          KC_E,           KC_R,          KC_T,                KC_Y,             KC_U,          KC_I,          KC_O,          KC_P,          KC_MINS,
       MO(LAYER_SUPER), KC_A,        KC_S,          KC_D,           KC_F,          KC_G,                KC_H,             KC_J,          KC_K,          KC_L,          KC_SCLN,       MO(LAYER_SUPER),
       OSM(MOD_LSFT),   KC_Z,        KC_X,          KC_C,           KC_V,          KC_B,                KC_N,             KC_M,          KC_COMM,       KC_DOT,        CA_EACU,       OSM(MOD_RSFT),
-                                                   TL_LOWR,        KC_BSPC,       LCTL_T(KC_TAB),      KC_ENT,           KC_SPC,        TL_UPPR
+                                                   TL_LOWR,        KC_BSPC,       LCTL_T(KC_TAB),      KC_ENTER,         KC_SPACE,      TL_UPPR
   ),
 
   [LAYER_NAV] = LAYOUT_split_3x6_3(
@@ -189,8 +190,8 @@ static bool has_state_changed( void ) {
     state_t state;
     get_state( &state );
     return (current.os_mode != state.os_mode) ||
-        (current.leds.caps_lock != state.leds.caps_lock) ||
         (current.leds.num_lock != state.leds.num_lock) ||
+        (current.leds.caps_lock != state.leds.caps_lock) ||
         (current.leds.scroll_lock != state.leds.scroll_lock) ||
         (current.mods != state.mods) ||
         (current.default_layer != state.default_layer ) ||
@@ -1015,8 +1016,9 @@ bool rgb_matrix_indicators_user(void) {
         rgb_matrix_set_color(RGB_INDEX_D, rgb.r, rgb.g, rgb.b);
         rgb_matrix_set_color(RGB_INDEX_F, rgb.r, rgb.g, rgb.b);
         rgb_matrix_set_color(RGB_INDEX_MINS, rgb.r, rgb.g, rgb.b);
+        return false;
     }
-    return false;
+    return true;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -1060,6 +1062,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KC_PAUSE:
         case KC_SCROLL_LOCK:
             return (os_mode != MAC);
+        case KC_MISSION_CONTROL:
+        case KC_LAUNCHPAD:
+            return (os_mode == MAC);
 
         case LCTL_T(KC_TAB):
             if (os_mode == MAC && !record->tap.count) {
