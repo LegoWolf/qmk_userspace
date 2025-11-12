@@ -67,8 +67,8 @@ typedef enum {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_split_3x6_3(
-      KC_ESC,          KC_Q,        KC_W,          KC_E,           KC_R,          KC_T,                KC_Y,             KC_U,          KC_I,          KC_O,          KC_P,          KC_MINS,
-      MO(LAYER_SUPER), KC_A,        KC_S,          KC_D,           KC_F,          KC_G,                KC_H,             KC_J,          KC_K,          KC_L,          KC_SCLN,       MO(LAYER_SUPER),
+      KC_ESC,          KC_Q,        KC_W,          TD(1),          KC_R,          KC_T,                TD(5),            TD(4),         TD(2),         TD(3),         KC_P,          KC_MINS,
+      MO(LAYER_SUPER), TD(0),       KC_S,          KC_D,           KC_F,          KC_G,                KC_H,             KC_J,          KC_K,          KC_L,          KC_SCLN,       MO(LAYER_SUPER),
       OSM(MOD_LSFT),   KC_Z,        KC_X,          KC_C,           KC_V,          KC_B,                KC_N,             KC_M,          KC_COMM,       KC_DOT,        CA_EACU,       OSM(MOD_RSFT),
                                                    TL_LOWR,        KC_BSPC,       LCTL_T(KC_TAB),      KC_ENTER,         KC_SPACE,      TL_UPPR
   ),
@@ -952,13 +952,12 @@ bool oled_task_user(void) {
 
 static void init_tap_dance( void ) {
     vial_tap_dance_entry_t tapdances[] = {
-        { KC_A, KC_ACIR, KC_NO, KC_NO,   TAPPING_TERM },
+        { KC_A, KC_ACIR, KC_NO, KC_A,    TAPPING_TERM },
         { KC_E, KC_ECIR, KC_NO, KC_EDIA, TAPPING_TERM },
         { KC_I, KC_ICIR, KC_NO, KC_IDIA, TAPPING_TERM },
-        { KC_O, KC_OCIR, KC_NO, KC_NO,   TAPPING_TERM },
+        { KC_O, KC_OCIR, KC_NO, KC_O,    TAPPING_TERM },
         { KC_U, KC_UCIR, KC_NO, KC_UDIA, TAPPING_TERM },
-        { KC_Y, KC_NO,   KC_NO, KC_YDIA, TAPPING_TERM },
-        { KC_C, KC_NO,   KC_NO, KC_NO,   TAPPING_TERM }
+        { KC_Y, KC_Y,    KC_NO, KC_YDIA, TAPPING_TERM }
     };
     int num_td = sizeof(tapdances) / sizeof(vial_tap_dance_entry_t);
 
