@@ -104,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESC,          KC_T,        KC_Q,          KC_W,           KC_E,          KC_R,                KC_PSLS,          KC_P7,         KC_P8,         KC_P9,         KC_PPLS,       TG(LAYER_GAME),
       KC_TAB,          KC_G,        KC_A,          KC_S,           KC_D,          KC_F,                KC_P0,            KC_P4,         KC_P5,         KC_P6,         KC_PMNS,       KC_ANIM,
       KC_LSFT,         KC_B,        KC_Z,          KC_X,           KC_C,          KC_V,                KC_PAST,          KC_P1,         KC_P2,         KC_P3,         KC_PCMM,       KC_RSFT,
-                                                   KC_LCTL,        KC_ENT,        KC_SPC,              KC_PENT,          KC_PEQL,       KC_PDOT                                                 
+                                                   KC_LCTL,        KC_ENT,        KC_SPC,              KC_PENT,          KC_PEQL,       KC_PDOT
   )
 };
 
