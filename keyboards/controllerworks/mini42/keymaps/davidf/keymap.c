@@ -111,6 +111,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 
+// Keys to highlight in the LED matrix when the game layer is enabled.
+#define NUM_HIGHLIGHTS_LEFT 4
+static uint8_t highlights_left[NUM_HIGHLIGHTS_LEFT][2] = {
+    { 0, 3 }, // E key
+    { 1, 2 }, // S key
+    { 1, 3 }, // D key
+    { 1, 4 }  // F key
+};
+
+#define NUM_HIGHLIGHTS_RIGHT 1
+static uint8_t highlights_right[NUM_HIGHLIGHTS_RIGHT][2] = {
+    { 0, 0 }  // MINUS key
+};
+
 static os_modes_t os_mode = WIN;
 
 #ifdef OLED_ENABLE
@@ -122,12 +136,6 @@ static os_modes_t os_mode = WIN;
 #define SMALL_ICON_SIZE 32
 #define LARGE_ICON_SIZE 128
 #define SHOW_GRAPHICS
-
-#define RGB_INDEX_E 17
-#define RGB_INDEX_S 19
-#define RGB_INDEX_D 16
-#define RGB_INDEX_F 11
-#define RGB_INDEX_MINS 51
 
 typedef struct {
     os_modes_t os_mode;
@@ -1013,18 +1021,22 @@ static bool send_deadkey_event(uint16_t deadkeycode, uint16_t keycode, keyrecord
 }
 
 bool rgb_matrix_indicators_user(void) {
-    state_t state;
-    get_state(&state);
-    if(state.layer == LAYER_GAME) {
+    if (get_highest_layer(layer_state) == LAYER_GAME) {
         HSV hsv = {HSV_WHITE};
         uint16_t value = rgb_matrix_get_val() * 2;
         hsv.v = value < 256 ? (uint8_t)value : 255;
         RGB rgb = hsv_to_rgb(hsv);
-        rgb_matrix_set_color(RGB_INDEX_E, rgb.r, rgb.g, rgb.b);
-        rgb_matrix_set_color(RGB_INDEX_S, rgb.r, rgb.g, rgb.b);
-        rgb_matrix_set_color(RGB_INDEX_D, rgb.r, rgb.g, rgb.b);
-        rgb_matrix_set_color(RGB_INDEX_F, rgb.r, rgb.g, rgb.b);
-        rgb_matrix_set_color(RGB_INDEX_MINS, rgb.r, rgb.g, rgb.b);
+        uint8_t (*highlights)[2] = highlights_right;
+        uint8_t num_highlights = NUM_HIGHLIGHTS_RIGHT;
+        if (is_keyboard_master()) {
+            highlights = highlights_left; 
+            num_highlights = NUM_HIGHLIGHTS_LEFT;
+        }
+        for (uint8_t i = 0; i < num_highlights; i++) {
+            uint8_t j = highlights[i][0];
+            uint8_t k = highlights[i][1];
+            rgb_matrix_set_color(g_led_config.matrix_co[j][k], rgb.r, rgb.g, rgb.b);
+        }
         return false;
     }
     return true;
