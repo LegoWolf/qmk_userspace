@@ -69,14 +69,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_split_3x6_3(
       KC_ESC,          KC_Q,        KC_W,          KC_E,           KC_R,          KC_T,                KC_Y,             KC_U,          KC_I,          KC_O,          KC_P,          KC_MINS,
       MO(LAYER_SUPER), KC_A,        KC_S,          KC_D,           KC_F,          KC_G,                KC_H,             KC_J,          KC_K,          KC_L,          KC_SCLN,       MO(LAYER_SUPER),
-      OSM(MOD_LSFT),   KC_Z,        KC_X,          KC_C,           KC_V,          KC_B,                KC_N,             KC_M,          KC_COMM,       KC_DOT,        CA_EACU,       OSM(MOD_RSFT),
+      KC_LSFT,         KC_Z,        KC_X,          KC_C,           KC_V,          KC_B,                KC_N,             KC_M,          KC_COMM,       KC_DOT,        CA_EACU,       KC_RSFT,
                                                    TL_LOWR,        KC_BSPC,       LCTL_T(KC_TAB),      KC_ENTER,         KC_SPACE,      TL_UPPR
   ),
 
   [LAYER_NAV] = LAYOUT_split_3x6_3(
-      XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX,        XXXXXXX,       XXXXXXX,             KC_PGUP,          KC_HOME,       KC_UP,         KC_END,        XXXXXXX,       XXXXXXX,
-      XXXXXXX,         KC_MPRV,     KC_MNXT,       KC_VOLD,        KC_VOLU,       KC_MPLY,             KC_PGDN,          KC_LEFT,       KC_DOWN,       KC_RIGHT,      XXXXXXX,       XXXXXXX,
-      _______,         XXXXXXX,     KC_LGUI,       KC_LCTL,        KC_LALT,       KC_MUTE,             XXXXXXX,          XXXXXXX,       MS_WHLU,       MS_WHLD,       XXXXXXX ,      _______,
+      XXXXXXX,         XXXXXXX,     XXXXXXX,       KC_INS,         KC_DEL,        KC_MUTE,             KC_PGUP,          KC_HOME,       KC_UP,         KC_END,        MS_WHLU,       XXXXXXX,
+      XXXXXXX,         KC_MPRV,     KC_MNXT,       KC_VOLD,        KC_VOLU,       KC_MPLY,             KC_PGDN,          KC_LEFT,       KC_DOWN,       KC_RIGHT,      MS_WHLD,       XXXXXXX,
+      _______,         KC_APP,      KC_LGUI,       KC_LCTL,        KC_LALT,       KC_RALT,             OSM(MOD_RALT),    OSM(MOD_LALT), OSM(MOD_LCTL), OSM(MOD_LGUI), XXXXXXX,       _______,
                                                    _______,        _______,       _______,             _______,          _______,       _______
   ),
 
@@ -88,17 +88,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [LAYER_FUNC] = LAYOUT_split_3x6_3(
-      XXXXXXX,         KC_F11,      KC_F12,        KC_F13,         KC_F14,        KC_F15,              KC_F16,           KC_BRID,       KC_BRIU,       KC_MCTL,       KC_LPAD,       TG(LAYER_GAME),
-      XXXXXXX,         KC_F1,       KC_F2,         KC_F3,          KC_F4,         KC_F5,               KC_F6,            KC_F7,         KC_F8,         KC_F9,         KC_F10,        XXXXXXX,
-      _______,         KC_PAUS,     KC_PSCR,       KC_NUM,         KC_SCRL,       UG_TOGG,             UG_NEXT,          UG_HUEU,       UG_SATU,       UG_VALU,       UG_SPDU,       _______,
+      KC_SLEP,         KC_F11,      KC_F12,        KC_F13,         KC_F14,        KC_F15,              KC_F16,           KC_BRID,       KC_BRIU,       KC_MCTL,       KC_LPAD,       TG(LAYER_GAME),
+      KC_OSMODE,       KC_F1,       KC_F2,         KC_F3,          KC_F4,         KC_F5,               KC_F6,            KC_F7,         KC_F8,         KC_F9,         KC_F10,        XXXXXXX,
+      _______,         KC_PAUS,     KC_NUM,        KC_SCRL,        KC_PSCR,       UG_TOGG,             UG_NEXT,          UG_HUEU,       UG_SATU,       UG_VALU,       UG_SPDU,       _______,
                                                    _______,        _______,       _______,             _______,          _______,       _______
   ),
 
   [LAYER_SUPER] = LAYOUT_split_3x6_3(
-      XXXXXXX,         XXXXXXX,     XXXXXXX,       CA_EGRV,        CA_DTIL,       KC_INS,              KC_DEL,           CA_UGRV,       CA_GRV,        CA_CIRC,       CA_DIAE,       KC_EQL,
-      XXXXXXX,         CA_AGRV,     CA_PIPE,       CA_LABK,        CA_RABK,       CA_BSLS,             CA_SLSH,          CA_LCBR,       CA_RCBR,       CA_LBRC,       CA_RBRC,       CA_PLUS,
-      KC_CAPS,         CA_LDAQ,     CA_RDAQ,       CA_CCED,        XXXXXXX,       XXXXXXX,             KC_APP,           OSM(MOD_LGUI), OSM(MOD_LCTL), OSM(MOD_LALT), OSM(MOD_RALT), KC_CAPS,
-                                                   _______,        _______,       _______,             _______,          _______,       KC_OSMODE
+      XXXXXXX,         CA_LABK,     CA_RABK,       CA_EGRV,        CA_DTIL,       S(CA_AGRV),          S(CA_CCED),       CA_UGRV,       CA_GRV,        CA_CIRC,       CA_DIAE,       KC_EQL,
+      KC_ADIA,         CA_AGRV,     KC_EDIA,       KC_IDIA,        KC_ODIA,       KC_UDIA,             KC_ACIR,          KC_ECIR,       KC_ICIR,       KC_OCIR,       KC_UCIR,       CA_PLUS,
+      _______,         CA_LDAQ,     CA_RDAQ,       CA_CCED,        CA_PIPE,       CA_BSLS,             CA_SLSH,          CA_LCBR,       CA_RCBR,       CA_LBRC,       CA_RBRC,       _______,
+                                                   _______,        _______,       _______,             _______,          _______,       _______
   ),
 
   [LAYER_GAME] = LAYOUT_split_3x6_3(
