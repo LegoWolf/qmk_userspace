@@ -43,26 +43,28 @@ typedef enum {
 #endif
     KC_ANIMATE,             // QK_USER_1
     KC_A_CIRCUMFLEX,        // QK_USER_2
-    KC_E_CIRCUMFLEX,        // QK_USER_3
-    KC_E_DIAERESIS,         // QK_USER_4
-    KC_I_CIRCUMFLEX,        // QK_USER_5
-    KC_I_DIAERESIS,         // QK_USER_6
-    KC_O_CIRCUMFLEX,        // QK_USER_7
-    KC_U_CIRCUMFLEX,        // QK_USER_8
-    KC_U_DIAERESIS,         // QK_USER_9
-    KC_Y_DIAERESIS          // QK_USER_10
+    KC_A_DIAERESIS,         // QK_USER_3
+    KC_E_CIRCUMFLEX,        // QK_USER_4
+    KC_E_DIAERESIS,         // QK_USER_5
+    KC_I_CIRCUMFLEX,        // QK_USER_6
+    KC_I_DIAERESIS,         // QK_USER_7
+    KC_O_CIRCUMFLEX,        // QK_USER_8
+    KC_O_DIAERESIS,         // QK_USER_9
+    KC_U_CIRCUMFLEX,        // QK_USER_10
+    KC_U_DIAERESIS,         // QK_USER_11
 } custom_keycodes_t;
 
 #define KC_ANIM KC_ANIMATE
 #define KC_ACIR KC_A_CIRCUMFLEX
+#define KC_ADIA KC_A_DIAERESIS
 #define KC_ECIR KC_E_CIRCUMFLEX
 #define KC_EDIA KC_E_DIAERESIS
 #define KC_ICIR KC_I_CIRCUMFLEX
-#define KC_OCIR KC_O_CIRCUMFLEX
 #define KC_IDIA KC_I_DIAERESIS
+#define KC_OCIR KC_O_CIRCUMFLEX
+#define KC_ODIA KC_O_DIAERESIS
 #define KC_UCIR KC_U_CIRCUMFLEX
 #define KC_UDIA KC_U_DIAERESIS
-#define KC_YDIA KC_Y_DIAERESIS
 #define MAX_LAYERS (LAYER_GAME + 1)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -1023,14 +1025,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         // Single-stroke versions of keys that normally require deadkey composition.
         case KC_A_CIRCUMFLEX: return send_deadkey_event(CA_CIRC, KC_A, record);
+        case KC_A_DIAERESIS: return send_deadkey_event(CA_DIAE, KC_A, record);
         case KC_E_CIRCUMFLEX: return send_deadkey_event(CA_CIRC, KC_E, record);
         case KC_E_DIAERESIS: return send_deadkey_event(CA_DIAE, KC_E, record);
         case KC_I_CIRCUMFLEX: return send_deadkey_event(CA_CIRC, KC_I, record);
         case KC_I_DIAERESIS: return send_deadkey_event(CA_DIAE, KC_I, record);
         case KC_O_CIRCUMFLEX: return send_deadkey_event(CA_CIRC, KC_O, record);
+        case KC_O_DIAERESIS: return send_deadkey_event(CA_DIAE, KC_O, record);
         case KC_U_CIRCUMFLEX: return send_deadkey_event(CA_CIRC, KC_U, record);
         case KC_U_DIAERESIS: return send_deadkey_event(CA_DIAE, KC_U, record);
-        case KC_Y_DIAERESIS: return send_deadkey_event(CA_DIAE, KC_Y, record);
 
         // Mac and Windows swap the placement of KC_NUBS and CA_SLSH under CSA keyboard layout.
         case KC_NONUS_BACKSLASH: return swap_key_event(CA_SLSH, record);
