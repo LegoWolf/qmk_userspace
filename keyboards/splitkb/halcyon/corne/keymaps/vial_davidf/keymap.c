@@ -121,11 +121,11 @@ static uint8_t highlights_right[NUM_HIGHLIGHTS_RIGHT][2] = {
 
 // Default key combinations.
 #define NUM_COMBOS 1
-static const vial_combo_entry_t combos[] = {
+    static const vial_combo_entry_t combos[] = {
     { { KC_LSFT, KC_RSFT, KC_NO, KC_NO }, KC_CAPS }
 };
 
-static os_modes_t os_mode = WIN;
+os_modes_t os_mode = WIN;
 
 static void init_os_mode(void) {
     os_variant_t os = detected_host_os();
@@ -141,9 +141,6 @@ static void init_combos(void) {
 void keyboard_post_init_user(void) {
     init_os_mode();
     init_combos();
-#ifdef OLED_ENABLE
-    update_state();
-#endif
 }
 
 static void emit_key_event(uint16_t keycode, keyrecord_t *record) {

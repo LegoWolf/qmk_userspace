@@ -1,4 +1,5 @@
 SRC += $(USER_PATH)/splitkb/hlc_tft_display/hlc_tft_display.c
+
 POST_CONFIG_H += $(USER_PATH)/splitkb/hlc_tft_display/config.h
 
 # Fonts
@@ -17,3 +18,21 @@ SRC += $(USER_PATH)/splitkb/hlc_tft_display/graphics/numbers/0.qgf.c \
 	   $(USER_PATH)/splitkb/hlc_tft_display/graphics/numbers/8.qgf.c \
 	   $(USER_PATH)/splitkb/hlc_tft_display/graphics/numbers/9.qgf.c \
 	   $(USER_PATH)/splitkb/hlc_tft_display/graphics/numbers/undef.qgf.c
+
+SRC += $(USER_PATH)/splitkb/hlc_tft_display/hlc_tft_davidf.c
+SRC += $(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/layer-base.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/layer-navigation.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/layer-number.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/layer-super.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/layer-function.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/layer-game.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/mod-caps-lock.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/mod-command.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/mod-control.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/mod-num-lock.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/mod-option.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/mod-scroll-lock.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/mod-shift.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/mod-win.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/os-mac.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/os-win.qgf.c

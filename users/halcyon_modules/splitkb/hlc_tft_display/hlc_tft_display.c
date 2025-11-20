@@ -3,6 +3,7 @@
 
 #include "halcyon.h"
 #include "hlc_tft_display.h"
+#include "hlc_tft_davidf.h"
 
 #include "hardware/structs/rosc.h"
 
@@ -313,7 +314,11 @@ bool display_module_housekeeping_task_kb(bool second_display) {
 
     // Update display information (layers, numlock, etc.)
     if(!second_display) {
+#ifdef DISPLAY_DAVIDF
+        update_display_davidf();
+#else
         update_display();
+#endif
     }
 
     // Move surface to lcd
