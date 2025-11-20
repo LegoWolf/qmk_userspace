@@ -47,8 +47,8 @@ static color_t color_os_win = { 147, 255, 160 };
 static color_t color_layer = { 0, 0, 160 };
 static color_t color_mod_on = { 19, 255, 255 };
 static color_t color_mod_off = { 19, 255, 30 };
-static color_t color_led_on = { 128, 255, 255 };
-static color_t color_led_off = { 128, 255, 30 };
+static color_t color_led_on = { 128, 255, 215 };
+static color_t color_led_off = { 128, 255, 20 };
 
 extern os_modes_t os_mode;
 
