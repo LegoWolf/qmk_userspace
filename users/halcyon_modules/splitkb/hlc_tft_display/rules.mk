@@ -26,13 +26,13 @@ SRC += $(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/layer-base.qgf.c \
 	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/layer-super.qgf.c \
 	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/layer-function.qgf.c \
 	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/layer-game.qgf.c \
-	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/mod-caps-lock.qgf.c \
-	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/mod-command.qgf.c \
-	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/mod-control.qgf.c \
-	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/mod-num-lock.qgf.c \
-	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/mod-option.qgf.c \
-	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/mod-scroll-lock.qgf.c \
-	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/mod-shift.qgf.c \
-	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/mod-win.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/led-caps-lock.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/led-num-lock.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/led-scroll-lock.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/modifier-command.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/modifier-control.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/modifier-option.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/modifier-shift.qgf.c \
+	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/modifier-win.qgf.c \
 	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/os-mac.qgf.c \
 	$(USER_PATH)/splitkb/hlc_tft_display/graphics/davidf/os-win.qgf.c
